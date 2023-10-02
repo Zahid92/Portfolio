@@ -1,5 +1,7 @@
 #footer{
     bottom:0;
+    /* position:fixed; */
+    margin-bottom: 0px;
     width:100%;
 }
 .footer-img{
