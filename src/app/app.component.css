@@ -9,7 +9,7 @@
 
 .bg-image {
     /* The image used */
-    background-image: url("../assets/Zahid_nidhan.JPG");
+    /* background-image: url("../assets/Zahid_nidhan.JPG"); */
   
     /* Add the blur effect */
     filter: blur(8px);
