@@ -1,4 +1,7 @@
-class Snake {
+import { Cell} from "./cell";
+import { IStats } from "./stats";
+
+export class Snake {
     init_length: number = 5;
     cells: Cell[] = [];
     direction: string = "down";

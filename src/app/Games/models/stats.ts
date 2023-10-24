@@ -1,4 +1,6 @@
-interface IStats {
+import { Cell } from "./cell";
+
+export interface IStats {
     gameOver: boolean;
     canvasWidth: number;
     canvasHeight: number;

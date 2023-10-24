@@ -4,7 +4,7 @@ interface ICell {
     color: string;
 }
 
-class Cell {
+export class Cell {
     x: number = 0;
     y: number = 0;
     color: string = "yellow";
