@@ -10,7 +10,7 @@ export class GamesComponent implements OnInit {
 
   constructor() { 
     this.games = [];
-    this.games.push({title:"Snake", description:"Bla bla bla snake game", image:"", link:"snake"});
+    this.games.push({title:"Snake", description:"Bla bla bla snake game", image:"https://wallpapers.com/images/high/green-snake-game-character-bqvxt2p5oibadgqn.webp", link:"snake"});
     this.games.push({title:"Snake", description:"Bla bla bla snake game", image:"", link:"snake"});
     this.games.push({title:"Snake", description:"Bla bla bla snake game", image:"", link:"snake"});
     this.games.push({title:"Snake", description:"Bla bla bla snake game", image:"", link:"snake"});
