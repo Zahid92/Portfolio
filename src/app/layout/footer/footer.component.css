@@ -1,6 +1,7 @@
 #footer{
     bottom:0;
-    /* position:fixed; */
+    align-self: center;
+    position:fixed;
     margin-bottom: 0px;
     width:100%;
 }

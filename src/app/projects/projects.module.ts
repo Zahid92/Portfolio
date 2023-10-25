@@ -16,6 +16,7 @@ import { Certificate } from './models/certificate';
     ProjectsRoutingModule
   ]
 })
+
 export class ProjectsModule {
   Projects!: Project[];
   Certificates!: Certificate[];
