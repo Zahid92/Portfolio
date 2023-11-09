@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body,html{
+body{
     height: 100%;
-}
-.space-up{
-    margin-top: 65px;
+    padding-top: 30px;
 }
