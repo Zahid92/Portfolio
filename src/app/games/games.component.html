@@ -1,12 +1,14 @@
 <div id="games" class="container grid-container text-center">
-    <div *ngFor="let game of games" class="grid-item">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src={{game.image}} alt="Game image">
-            <div class="card-body">
-              <h4 class="card-title">{{game.title}}</h4>
-              <p class="card-text">{{game.description}}</p>
-              <a routerLink={{game.link}} class="btn btn-primary">Play</a>
-            </div>
-          </div>
+  <div class="row">
+    <div *ngFor="let game of games" class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card">
+        <img class="card-img-top" src={{game.image}} alt="Game image">
+        <div class="card-body">
+          <h4 class="card-title">{{game.title}}</h4>
+          <p class="card-text">{{game.description}}</p>
+          <a routerLink={{game.link}} class="btn btn-primary">Play</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
