@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Cell } from '../models/cell';
 import { Snake } from '../models/snake';
 import { IStats } from '../models/stats';
-
+const SnakeHighScore = 'SnakeHighScore';
 @Component({
   selector: 'app-snake-game',
   templateUrl: './snake-game.component.html',
@@ -15,8 +15,9 @@ export class SnakeGameComponent implements OnInit {
   pen: any;
   stats: IStats;
   gameloop: any;
+  newHighScore: string = '';
   constructor() {
-    this.snake = new Snake();
+    this.snake = new Snake(0);
     this.stats = {
       gameOver: false,
       canvasHeight: 0,
@@ -28,6 +29,13 @@ export class SnakeGameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.start();
+    //document.addEventListener('keydown', this.KeyPressed);
+  }
+
+  start() {
+    this.newHighScore = '';
+    this.reset();
     this.canvas = document.getElementById('canvas');
     this.pen = this.canvas.getContext('2d');
     this.stats = {
@@ -36,9 +44,9 @@ export class SnakeGameComponent implements OnInit {
       canvasWidth: this.canvas.width,
       food: new Cell,
       score: 0,
-      highScore: 0
+      highScore: Number(localStorage.getItem(SnakeHighScore)) ?? 0
     };
-    this.snake.createSnake(this.canvas.width);
+    this.snake = new Snake(this.canvas.width);
     this.stats.food.setNextRandomCell(this.canvas.width, this.canvas.height);
     this.stats.score = 5;
     this.draw();
@@ -46,14 +54,19 @@ export class SnakeGameComponent implements OnInit {
       this.snake.updateSnake(this.stats);
       this.draw();
       if (this.gameloop && this.stats.gameOver == true) {
-        var k = document.getElementById("gameover");
-        k?.removeAttribute('hidden');
+        this.updateHighScore();
         clearInterval(this.gameloop);
       }
     }, 130);
-    //document.addEventListener('keydown', this.KeyPressed);
   }
 
+  updateHighScore() {
+    if(this.stats.score > this.stats.highScore){
+      this.stats.highScore = this.stats.score;
+      this.newHighScore = 'New';
+      localStorage.setItem(SnakeHighScore, this.stats.highScore.toString());
+    }
+  }
 
   draw() {
     this.pen.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -71,7 +84,7 @@ export class SnakeGameComponent implements OnInit {
 
   //add event listener to our game
   //listen for keyboard events
-  @HostListener('document:keydown',['$event'])
+  @HostListener('document:keydown', ['$event'])
   KeyPressed(e: KeyboardEvent) {
     console.log("you pressed a key");
     console.log(e);
@@ -90,11 +103,14 @@ export class SnakeGameComponent implements OnInit {
     }
   }
 
-
-  ngOnDestroy() {
+  reset() {
     if (this.gameloop) {
       clearInterval(this.gameloop);
     }
+  }
+
+  ngOnDestroy() {
+    this.reset();
   }
 
 }

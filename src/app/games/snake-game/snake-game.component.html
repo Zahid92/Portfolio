@@ -1,3 +1,18 @@
-<div id="snake-game" class="container text-center space-up">
-    <canvas width="400" height="400" id="canvas" ></canvas>
+<div id="snake-game" class="container text-center">
+    <div class="row justify-content-center">
+        <canvas class="col-md-8 col-lg-6 col-xl-5" width="400" height="400" id="canvas"></canvas>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <h2>
+                {{newHighScore}} High Score: {{stats.highScore}}
+            </h2>
+        </div>
+        <div *ngIf="stats.gameOver" class="col-sm-10">
+            <h3>
+                Game Over
+            </h3>
+            <button class="btn-danger" (click)="start()">Restart</button>
+        </div>
+    </div>
 </div>

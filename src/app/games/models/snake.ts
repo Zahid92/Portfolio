@@ -3,10 +3,12 @@ import { IStats } from "./stats";
 
 export class Snake {
     init_length: number = 5;
-    cells: Cell[] = [];
-    direction: string = "down";
+    cells: Cell[];
+    direction: string ;
 
-    createSnake(canvasWidth: number): void {
+    constructor(canvasWidth: number) {
+        this.cells = [];
+        this.direction = 'down';
         for (var i = this.init_length - 1; i >= 0; i--) {
             this.cells.push(new Cell({ x: canvasWidth / 20, y: i, color: "yellow" }));
         }
@@ -22,7 +24,7 @@ export class Snake {
         }
     }
 
-    updateSnake(obj: IStats): IStats {
+    updateSnake(obj: IStats): void {
         var headX = this.cells[0].x;
         var headY = this.cells[0].y;
 
@@ -37,9 +39,6 @@ export class Snake {
             obj.score++;
             this.cells[0].color = obj.food.color;
             obj.food.setNextRandomCell(obj.canvasWidth, obj.canvasHeight);
-            if (obj.score > obj.highScore) {
-                obj.highScore = obj.score;
-            }
         }
         else {
             //if food not taken;
@@ -85,6 +84,5 @@ export class Snake {
         if (this.cells[0].y < 0 || this.cells[0].x > last_x || this.cells[0].x < 0 || this.cells[0].y > last_y) {
             obj.gameOver = true;
         }
-        return obj;
     }
 }
