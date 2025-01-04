@@ -4,9 +4,10 @@ import { Snake } from '../models/snake';
 import { IStats } from '../models/stats';
 const SnakeHighScore = 'SnakeHighScore';
 @Component({
-  selector: 'app-snake-game',
-  templateUrl: './snake-game.component.html',
-  styleUrls: ['./snake-game.component.css']
+    selector: 'app-snake-game',
+    templateUrl: './snake-game.component.html',
+    styleUrls: ['./snake-game.component.css'],
+    standalone: false
 })
 export class SnakeGameComponent implements OnInit {
 

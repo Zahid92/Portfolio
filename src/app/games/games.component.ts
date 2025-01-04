@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IGame } from './models/igame';
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+    selector: 'app-games',
+    templateUrl: './games.component.html',
+    styleUrls: ['./games.component.css'],
+    standalone: false
 })
 export class GamesComponent implements OnInit {
   games: IGame[];
