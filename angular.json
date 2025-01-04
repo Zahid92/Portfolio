@@ -19,7 +19,8 @@
           "options": {
             "baseHref": "/Portfolio/",
             "outputPath": {
-              "base": "dist/portfolio"
+              "base": "dist/portfolio",
+              "browser": ""
             },
             "index": "src/index.html",
             "polyfills": [
@@ -56,7 +57,6 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath":"dist/portfolio",
               "outputHashing": "all"
             },
             "development": {
